@@ -360,7 +360,10 @@ cat /etc/nginx/huatpass
 ![add auth to page](https://i.imgur.com/7kt70HM.png)
 
 ## SSL (skipped) - to use LetEncrypt instead
+With the cert in the webserver, attached the settings via the config file 
+[conf.d folder](#conf.d-folder)
 
+![SSL Cert](https://i.imgur.com/60Pb5At.png)
 
 
 # Part 3
