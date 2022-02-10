@@ -29,17 +29,16 @@ curl localhost
 ## Config location
 Default config location
 ```
-/etc/nginx/nginx.conf
-
-ls 
+cd  /etc/nginx
 ```
+
 ![config location](https://i.imgur.com/kOjKVin.png)
 
 ```
 cat /etc/nginx/nginx.conf
 ```
 ![nginx](https://i.imgur.com/pZk7KKn.png)
-Access logs and etc
+```Access logs and etc```
 ![nginx access logs](https://i.imgur.com/Xw5aPQ1.png)
 
 
@@ -50,36 +49,191 @@ cd sites-enabled
 ```
 ![nginx sites-enabled](https://i.imgur.com/xMxcO8z.png)
 
-``` cat default ```
+``` 
+cat default 
+```
 ![nginx sites-enabled cat default 1](https://i.imgur.com/ahn31sU.png)
 ![nginx sites-enabled cat default 2](https://i.imgur.com/1GcvqBY.png)
 
 
 ## sites-enable linked sites-available
-```ls -ltr```
+```
+ls -ltr
+```
 ![nginx sites-enabled ls -ltr](https://i.imgur.com/iM8SlkO.png)
 
 In ```sites-enable``` folder - to unlink the default config
 ```
-unlinked default
+sudo unlinked default
 ```
 ![nginx sites-enabled unlinked default](https://i.imgur.com/hXeRk2g.png)
-check if the link still present ```ls -ltr```
+
+Check if the link still present 
+```
+ls -ltr
+```
 ![nginx sites-enabled check link](https://i.imgur.com/CnxDbl9.png)
 
 
 ## conf.d folder
-https://i.imgur.com/IDGeUzB.png
-
+Location conf.d folder - to be customised
+```
+/etc/nginx/conf.d
+```
+![nginx sites-enabled conf.d](https://i.imgur.com/IDGeUzB.png)
 ## Setup your own conf file 
 ```
-nano huatcake.conf
+sudo nano huatcake.conf
 ```
 
-specific the port number
-specific basic index page formats
-identify location of the server via server_name
+- specific the port number
+- specific basic index page formats
+- identify custom name of the server via server_name
+- root directory of folders - where all the html locate
+- always end with semicolons
 
-always end with semicolons
+## Starter config
+```
+server {
+
+        listen 80 default_server;
+        index index.html index.htm index.php;
+        server_name huatcake.local;
+        root /var/www/huatcake.local;
+
+}
+
+```
+
+## Config validation - check config file
+
+```
+sudo nginx -t
+```
+https://i.imgur.com/uPUugjK.png
+
+
+## root folder location - html
+```
+/var/www/html
+```
+
+## create a custom html location - huatcake.local
+```huatcake.local``` is created in ```/var/www/``` folder
+then ``` cd huatcake.local ``` into the folder
+
+
+```
+sudo mkdir huatcake.local
+```
+
+https://i.imgur.com/frqQslw.png
+
+
+## To test the folder and location
+``` 
+sudo nano index.html
+```
+
+index.html page is
+
+https://i.imgur.com/Gnx4NCV.png
+
+
+After which reload nginx 
+```
+sudo systemctl reload nginx
+```
+https://i.imgur.com/bNTDhrn.png
+
+
+
+## Git clone repo
+
+Go to the folder of ubuntu and git clone this repo
+
+```
+git clone 
+``` 
+
+https://i.imgur.com/tj7YPjO.png
+
+## copy/mv the files over to ```huatcake.local```
+
+```
+sudo mv -v /home/ubuntu/nginx-basics-techbeast/* /var/www/huatcake.local/
+```
+https://i.imgur.com/zBDtibA.png
+
+
+
+## Access/Reload the website - updated
+
+https://i.imgur.com/TluCKAn.png
+
+
+
+
+## Connect hyperlink to huat.html
+
+```
+cd  /etc/nginx/conf.d
+```
+https://i.imgur.com/SOmQ2vu.png
+
+Add location settings in the files
+```
+
+location / {
+
+try_files $uri $uri/ $uri.html =400;
+
+}
+
+
+location /huat {
+
+try_files $uri /huat.html;
+
+}
+
+
+
+```
+https://i.imgur.com/iVIoitI.png
+
+
+
+## Add error page /mypage or 400
+```
+
+error_page 400 404 /400.html;
+location = /400.html {
+
+internal;
+}
+
+```
+https://i.imgur.com/mwApwRZ.png
+
+## Update Nginx config
+
+```
+sudo nginx -t
+
+sudo systemctl reload nginx
+```
+https://i.imgur.com/8iWyifv.png
+
+
+## Access the webpage again
+Connected hyperlink
+https://i.imgur.com/5TZUh1Y.png
+
+
+Connected error pages such as 400 etc
+https://i.imgur.com/wK5fMK0.png
+https://i.imgur.com/KNX6Tbc.png
+
 
 ## END
