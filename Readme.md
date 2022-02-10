@@ -271,4 +271,99 @@ Simulate server error 500
 
 
 ![update 500](https://i.imgur.com/sr3XOOO.png)
-## END
+
+
+
+
+# Part 2
+https://i.imgur.com/rvfusCj.png
+
+
+## Restrict access by IP address
+1. Go to config location & edit the config file
+```
+cd  /etc/nginx/conf.d
+```
+
+
+2. ```sudo nano huatcake.conf``` add the below code into the config
+- deny all - will deny all ip address
+- allow - google your ip address and add in.
+
+```
+
+location /secure {
+
+try_files $uri /secure.html;
+
+allow X.X.X.X
+deny all;
+
+}
+
+
+```
+
+![secure.html](https://i.imgur.com/iwwDtUS.png)
+
+
+
+
+3. nginx -t and systemctl reload nginx
+[Reload nginx](#Config-validation---check-config-file)
+
+4. To test address to the website. You can visit. To test secure, connect to another network.
+
+## Protect sensitive pages using username & password (basic)
+5. Install apache utils (not sure is the right way)
+
+```
+sudo apt-get install -y apache2-utils
+
+if error;
+sudo apt-get update 
+
+```
+6. run the command to add username and then enter password
+
+```
+sudo htpasswd -c /etc/nginx/huatpass huatuser
+
+```
+![add password and username](https://i.imgur.com/TXhjT0g.png)
+
+7. Go to config file and edit for auth access
+[conf.d folder](#conf.d-folder)
+
+- Add the below commands for the page that require auth
+- ```auth_basic_user_file``` will be the path folder added before (```/etc/nginx/huatpass```)
+
+```
+
+        auth_basic "Authentication is require!";
+        auth_basic_user_file /etc/nginx/huatpass;
+
+```
+
+![add auth to page](https://i.imgur.com/LEyajqN.png)
+
+
+8. nginx -t and systemctl reload nginx
+[Reload nginx](#Config-validation---check-config-file)
+
+
+
+### Password and user location
+```
+cat /etc/nginx/huatpass
+```
+![add auth to page](https://i.imgur.com/7kt70HM.png)
+
+## SSL (skipped) - to use LetEncrypt instead
+
+
+
+
+# Part 3
+
+# END
