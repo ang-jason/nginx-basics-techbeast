@@ -110,7 +110,8 @@ server {
 ```
 sudo nginx -t
 ```
-https://i.imgur.com/uPUugjK.png
+![nginx -t](https://i.imgur.com/uPUugjK.png)
+
 
 
 ## root folder location - html
@@ -126,8 +127,8 @@ then ``` cd huatcake.local ``` into the folder
 ```
 sudo mkdir huatcake.local
 ```
+![huatcake.local](https://i.imgur.com/frqQslw.png)
 
-https://i.imgur.com/frqQslw.png
 
 
 ## To test the folder and location
@@ -137,7 +138,8 @@ sudo nano index.html
 
 index.html page is
 
-https://i.imgur.com/Gnx4NCV.png
+
+![default index.html](https://i.imgur.com/Gnx4NCV.png)
 
 
 After which reload nginx 
@@ -145,6 +147,7 @@ After which reload nginx
 sudo systemctl reload nginx
 ```
 https://i.imgur.com/bNTDhrn.png
+![reload nginx](https://i.imgur.com/bNTDhrn.png)
 
 
 
@@ -155,6 +158,8 @@ Go to the folder of ubuntu and git clone this repo
 ```
 git clone 
 ``` 
+![git clone](https://i.imgur.com/tj7YPjO.png)
+
 
 https://i.imgur.com/tj7YPjO.png
 
@@ -164,14 +169,14 @@ https://i.imgur.com/tj7YPjO.png
 sudo mv -v /home/ubuntu/nginx-basics-techbeast/* /var/www/huatcake.local/
 ```
 https://i.imgur.com/zBDtibA.png
-
+![mv -v](https://i.imgur.com/zBDtibA.png)
 
 
 ## Access/Reload the website - updated
 
 https://i.imgur.com/TluCKAn.png
 
-
+![updated website](https://i.imgur.com/TluCKAn.png)
 
 
 ## Connect hyperlink to huat.html
@@ -180,6 +185,8 @@ https://i.imgur.com/TluCKAn.png
 cd  /etc/nginx/conf.d
 ```
 https://i.imgur.com/SOmQ2vu.png
+![/etc/nginx/conf.d](https://i.imgur.com/SOmQ2vu.png)
+
 
 Add location settings in the files
 ```
@@ -202,6 +209,7 @@ try_files $uri /huat.html;
 ```
 https://i.imgur.com/iVIoitI.png
 
+![location huat.html](https://i.imgur.com/iVIoitI.png)
 
 
 ## Add error page /mypage or 400
@@ -216,6 +224,39 @@ internal;
 ```
 https://i.imgur.com/mwApwRZ.png
 
+
+![400.html](https://i.imgur.com/mwApwRZ.png)
+
+
+
+## Add server error page 500 / 50x
+```
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+
+internal;
+}
+
+```
+https://i.imgur.com/ZLNv0Ko.png
+![50x.html](https://i.imgur.com/ZLNv0Ko.png)
+
+
+
+## To test or simulate server error 500
+
+```
+
+location /500error {
+fastcgi_pass unix:/this/is/error;
+}
+
+```
+
+
+https://i.imgur.com/ulcMOaZ.png
+![simulate server error 500](https://i.imgur.com/ulcMOaZ.png)
+
 ## Update Nginx config
 
 ```
@@ -224,16 +265,22 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 https://i.imgur.com/8iWyifv.png
-
+![nginx reload -t](https://i.imgur.com/8iWyifv.png)
 
 ## Access the webpage again
 Connected hyperlink
 https://i.imgur.com/5TZUh1Y.png
+![update huat](https://i.imgur.com/5TZUh1Y.png)
 
 
 Connected error pages such as 400 etc
 https://i.imgur.com/wK5fMK0.png
 https://i.imgur.com/KNX6Tbc.png
+![update 400 1](https://i.imgur.com/wK5fMK0.png)
+![update 400 2](https://i.imgur.com/KNX6Tbc.png)
 
+Simulate server error 500
 
+https://i.imgur.com/sr3XOOO.png
+![update 500](https://i.imgur.com/sr3XOOO.png)
 ## END
