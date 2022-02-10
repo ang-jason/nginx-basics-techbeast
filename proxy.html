@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <script type="text/javascript"> 
+    function display_c(){
+    var refresh=1000; // Refresh rate in milli seconds
+    mytime=setTimeout('display_ct()',refresh)
+    }
+    
+    function display_ct() {
+    var x = new Date()
+    document.getElementById('ct').innerHTML = x;
+    display_c();
+     }
+
+
+     let port = location.port;
+document.getElementById("demo-port").innerHTML = "The port number of the current page is: " + port;
+
+    </script>
+  
+</header>
+<style>
+div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+</style>
+
+
+
+
+<body style="background-color:white" onload=display_ct() >
+<div>
+<h1 style="font-family:verdana" style="color:black">Welcome to HUAT Ngnix Basics</h1>
+<!-- <a href="/huat" h2 style="font-family:verdana" style="color:black">click for huat toto</h1></a> -->
+<h3 style="font-family:verdana">This app is running on port</h3><p id="demo-port"></p></br> 
+
+Time is <h3 id='ct' ></h3>
+
+</br>
+powered by
+</div>
+
+<img src=https://www.nginx.com/wp-content/uploads/2018/08/NGINX-logo-rgb-large.png class="center" height=120px width=300px></img>
+
+
+</body>
+</html>
