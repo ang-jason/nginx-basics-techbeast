@@ -169,13 +169,13 @@ sudo mv -v /home/ubuntu/nginx-basics-techbeast/* /var/www/huatcake.local/
 
 
 ### Access/Reload the website - updated
-8. Update website due to the git clone
+8. Refresh the website; update due to the git clone
 
 ![updated website](https://i.imgur.com/TluCKAn.png)
 
 
 ### Connect hyperlink to huat.html
-9. Add hyperlink to nginx pages
+9. Add hyperlink to nginx pages (click for huat toto)
 ```
 cd  /etc/nginx/conf.d
 ```
@@ -183,6 +183,9 @@ cd  /etc/nginx/conf.d
 ![/etc/nginx/conf.d](https://i.imgur.com/SOmQ2vu.png)
 
 Add location settings in the files
+- / is index
+- /huat is hyperlink huat.html
+
 ```
 
 location / {
