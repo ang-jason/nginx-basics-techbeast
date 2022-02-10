@@ -3,12 +3,12 @@
 - https://github.com/techbeast-org/nginx-basics
 
 # Part 1
-## using ubuntu - install nginx
+1. using ubuntu - install nginx
 ```
 sudo apt-get install nginx
 ```
 
-## Check Nginx status
+2. Check Nginx status
 ```
 sudo systemctl status nginx
 ```
@@ -16,7 +16,7 @@ sudo systemctl status nginx
 
 
 
-## curl localhost
+3. curl localhost
 ```
 curl localhost
 ```
