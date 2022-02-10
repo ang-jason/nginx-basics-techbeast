@@ -28,7 +28,7 @@ curl localhost
 
 
 ## Config location
-Default config location
+5. Default config location
 ```
 cd  /etc/nginx
 ```
@@ -39,7 +39,6 @@ cd  /etc/nginx
 cat /etc/nginx/nginx.conf
 ```
 ![nginx](https://i.imgur.com/pZk7KKn.png)
-Access logs and etc
 
 ![nginx access logs](https://i.imgur.com/Xw5aPQ1.png)
 
@@ -63,7 +62,9 @@ ls -ltr
 ```
 ![nginx sites-enabled ls -ltr](https://i.imgur.com/iM8SlkO.png)
 
-In ```sites-enable``` folder - to unlink the default config
+## Custom your own nginx pages and location
+
+1. In ```sites-enable``` folder - to unlink the default config
 ```
 sudo unlinked default
 ```
@@ -83,6 +84,7 @@ Location conf.d folder - to be customised
 ```
 ![nginx sites-enabled conf.d](https://i.imgur.com/IDGeUzB.png)
 ## Setup your own conf file 
+2. create new conf file
 ```
 sudo nano huatcake.conf
 ```
@@ -107,7 +109,7 @@ server {
 ```
 
 ## Config validation - check config file
-
+3. Check config file
 ```
 sudo nginx -t
 ```
@@ -121,6 +123,8 @@ sudo nginx -t
 ```
 
 ## create a custom html location - huatcake.local
+4. Make new folder for new custom location
+
 ```huatcake.local``` is created in ```/var/www/``` folder
 then ``` cd huatcake.local ``` into the folder
 
@@ -133,17 +137,14 @@ sudo mkdir huatcake.local
 
 
 ## To test the folder and location
+5. Setup index.html page
 ``` 
 sudo nano index.html
 ```
-
-index.html page is
-
-
 ![default index.html](https://i.imgur.com/Gnx4NCV.png)
 
 
-After which reload nginx 
+6. After which reload nginx 
 ```
 sudo systemctl reload nginx
 ```
@@ -152,8 +153,7 @@ sudo systemctl reload nginx
 
 
 ### Git clone repo
-
-Go to the folder of ubuntu and git clone this repo
+7. Go to the folder of ubuntu and git clone this repo
 
 ```
 git clone 
@@ -169,20 +169,18 @@ sudo mv -v /home/ubuntu/nginx-basics-techbeast/* /var/www/huatcake.local/
 
 
 ### Access/Reload the website - updated
-
-https://i.imgur.com/TluCKAn.png
+8. Update website due to the git clone
 
 ![updated website](https://i.imgur.com/TluCKAn.png)
 
 
 ### Connect hyperlink to huat.html
-
+9. Add hyperlink to nginx pages
 ```
 cd  /etc/nginx/conf.d
 ```
-https://i.imgur.com/SOmQ2vu.png
-![/etc/nginx/conf.d](https://i.imgur.com/SOmQ2vu.png)
 
+![/etc/nginx/conf.d](https://i.imgur.com/SOmQ2vu.png)
 
 Add location settings in the files
 ```
@@ -203,8 +201,8 @@ try_files $uri /huat.html;
 
 ![location huat.html](https://i.imgur.com/iVIoitI.png)
 
-
 ### Add error page /mypage or 400
+10. Add error page /mypage or 400 to nginx pages
 ```
 
 error_page 400 404 /400.html;
@@ -219,6 +217,7 @@ internal;
 
 
 ### Add server error page 500 / 50x
+11. Add server error page 500 / 50x to nginx pages
 ```
 
 error_page 500 502 503 504 /50x.html;
