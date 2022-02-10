@@ -77,7 +77,7 @@ ls -ltr
 ![nginx sites-enabled check link](https://i.imgur.com/CnxDbl9.png)
 
 
-## conf.d folder
+## Confd folder
 Location conf.d folder - to be customised
 ```
 /etc/nginx/conf.d
@@ -144,8 +144,10 @@ sudo nano index.html
 ![default index.html](https://i.imgur.com/Gnx4NCV.png)
 
 
-6. After which reload nginx 
+## Validate and Reload Nginx
+6. After which, validate and reload nginx 
 ```
+sudo nginx -t
 sudo systemctl reload nginx
 ```
 ![reload nginx](https://i.imgur.com/bNTDhrn.png)
@@ -276,7 +278,8 @@ Simulate server error 500
 
 
 # Part 2
-https://i.imgur.com/rvfusCj.png
+![Part 2 Introduction](https://i.imgur.com/rvfusCj.png)
+
 
 
 ## Restrict access by IP address
@@ -310,7 +313,7 @@ deny all;
 
 
 3. nginx -t and systemctl reload nginx
-[Reload nginx](#Config-validation---check-config-file)
+[Reload nginx](#Validate-and-Reload-Nginx)
 
 4. To test address to the website. You can visit. To test secure, connect to another network.
 
@@ -333,7 +336,7 @@ sudo htpasswd -c /etc/nginx/huatpass huatuser
 ![add password and username](https://i.imgur.com/TXhjT0g.png)
 
 7. Go to config file and edit for auth access
-[conf.d folder](#conf.d-folder)
+[conf.d folder](#confd-folder)
 
 - Add the below commands for the page that require auth
 - ```auth_basic_user_file``` will be the path folder added before (```/etc/nginx/huatpass```)
@@ -349,7 +352,7 @@ sudo htpasswd -c /etc/nginx/huatpass huatuser
 
 
 8. nginx -t and systemctl reload nginx
-[Reload nginx](#Config-validation---check-config-file)
+[Reload nginx](#Validate-and-Reload-Nginx)
 
 
 
@@ -361,7 +364,7 @@ cat /etc/nginx/huatpass
 
 ## SSL (skipped) - to use LetEncrypt instead
 With the cert in the webserver, attached the settings via the config file 
-[conf.d folder](#conf.d-folder)
+[conf.d folder](#confd-folder)
 
 ![SSL Cert](https://i.imgur.com/60Pb5At.png)
 
